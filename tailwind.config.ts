@@ -61,7 +61,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				rainbow: {
+					red: 'hsl(var(--rainbow-red))',
+					orange: 'hsl(var(--rainbow-orange))',
+					yellow: 'hsl(var(--rainbow-yellow))',
+					green: 'hsl(var(--rainbow-green))',
+					blue: 'hsl(var(--rainbow-blue))',
+					purple: 'hsl(var(--rainbow-purple))',
+					pink: 'hsl(var(--rainbow-pink))'
 				}
+			},
+			backgroundImage: {
+				'gradient-rainbow': 'var(--gradient-rainbow)',
+				'gradient-soft': 'var(--gradient-soft)'
+			},
+			fontFamily: {
+				'comic': ['Comic Neue', 'cursive'],
+				'kid': ['Fredoka One', 'cursive']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

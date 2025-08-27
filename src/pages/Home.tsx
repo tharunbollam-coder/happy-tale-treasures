@@ -1,0 +1,128 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import StoryCard from "@/components/StoryCard";
+import { stories } from "@/data/stories";
+import { Sparkles, Star, Heart } from "lucide-react";
+import heroImage from "@/assets/hero-stories.jpg";
+
+const Home = () => {
+  const featuredStories = stories.slice(0, 3);
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 px-4 bg-gradient-soft overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-rainbow opacity-10"></div>
+        <div className="container mx-auto text-center relative z-10">
+          <div className="mb-8">
+            <img 
+              src={heroImage} 
+              alt="Magical storybook world" 
+              className="mx-auto rounded-3xl shadow-2xl max-w-4xl w-full h-64 md:h-96 object-cover"
+            />
+          </div>
+          
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Sparkles className="w-8 h-8 text-rainbow-yellow animate-pulse" />
+            <h1 className="font-kid text-4xl md:text-6xl bg-gradient-rainbow bg-clip-text text-transparent">
+              Welcome to KidsStories!
+            </h1>
+            <Sparkles className="w-8 h-8 text-rainbow-pink animate-pulse" />
+          </div>
+          
+          <p className="font-comic text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+            🌟 Discover magical tales that teach valuable lessons! 🌟
+            <br />
+            Every story is an adventure filled with friendship, kindness, and learning!
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/stories">
+              <Button size="lg" className="font-comic font-bold text-lg px-8 py-6 rounded-full bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                <Heart className="w-5 h-5 mr-2" />
+                Explore All Stories
+              </Button>
+            </Link>
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="font-comic font-bold text-lg px-8 py-6 rounded-full transform hover:scale-105 transition-all duration-200 shadow-lg"
+            >
+              <Star className="w-5 h-5 mr-2" />
+              Random Story
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Stories Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-kid text-3xl md:text-4xl text-foreground mb-4">
+              ✨ Featured Stories ✨
+            </h2>
+            <p className="font-comic text-lg text-muted-foreground max-w-2xl mx-auto">
+              Start your reading adventure with these wonderful tales!
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredStories.map((story) => (
+              <StoryCard key={story.id} story={story} />
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/stories">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="font-comic font-bold text-lg px-8 py-4 rounded-full border-2 hover:scale-105 transition-all duration-200"
+              >
+                See All Stories →
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 px-4 bg-secondary/30">
+        <div className="container mx-auto text-center">
+          <h2 className="font-kid text-3xl md:text-4xl text-foreground mb-12">
+            Why Kids Love Our Stories? 🎈
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-rainbow-blue/20">
+              <div className="text-6xl mb-4">📚</div>
+              <h3 className="font-kid text-xl mb-3 text-foreground">Educational</h3>
+              <p className="font-comic text-muted-foreground">
+                Every story teaches important life lessons about friendship, honesty, and kindness!
+              </p>
+            </div>
+            
+            <div className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-rainbow-green/20">
+              <div className="text-6xl mb-4">🎨</div>
+              <h3 className="font-kid text-xl mb-3 text-foreground">Colorful</h3>
+              <p className="font-comic text-muted-foreground">
+                Beautiful illustrations and vibrant designs make reading fun and engaging!
+              </p>
+            </div>
+            
+            <div className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-rainbow-purple/20">
+              <div className="text-6xl mb-4">❤️</div>
+              <h3 className="font-kid text-xl mb-3 text-foreground">Safe</h3>
+              <p className="font-comic text-muted-foreground">
+                All our stories are carefully crafted to be appropriate and positive for children!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
