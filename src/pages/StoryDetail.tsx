@@ -93,14 +93,33 @@ const StoryDetail = () => {
               📖 The Story
             </h2>
           </CardHeader>
-          <CardContent>
-            <div className="prose prose-lg max-w-none">
-              {story.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="font-comic text-foreground leading-relaxed mb-4 text-lg">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+          <CardContent className="space-y-8">
+            {story.content.map((section, index) => (
+              <div key={index} className="space-y-6">
+                {/* Text Section */}
+                <div className="prose prose-lg max-w-none">
+                  {section.text.split('\n\n').map((paragraph, pIndex) => (
+                    <p key={pIndex} className="font-comic text-foreground leading-relaxed mb-4 text-lg">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                
+                {/* Image Section */}
+                {section.image && (
+                  <div className="flex justify-center">
+                    <div className="relative rounded-2xl overflow-hidden border-4 border-rainbow-yellow/30 shadow-xl max-w-2xl w-full">
+                      <img 
+                        src={section.image} 
+                        alt={`Story illustration ${index + 1}`}
+                        className="w-full h-auto object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </CardContent>
         </Card>
 
