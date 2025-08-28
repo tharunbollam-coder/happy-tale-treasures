@@ -30,7 +30,8 @@ One day, Shell the tortoise said quietly, "Zippy, would you like to have a race 
 
 All the animals laughed. "A tortoise racing a rabbit? That's silly!" they said.
 
-But Shell was determined. "I may be slow, but I never give up," he said with a smile.`
+But Shell was determined. "I may be slow, but I never give up," he said with a smile.`,
+        image: "/src/assets/tortoise-hare-1.jpg"
       },
       {
         text: `The race began at sunrise. Zippy zoomed ahead so quickly that Shell could barely see him! "This is too easy," thought Zippy. "I'll take a little nap and still win easily."
@@ -72,7 +73,7 @@ The second little pig, Stick, wanted to play too, but he thought a little more a
 The third little pig, Brick, worked very hard all day long. He carefully built his house out of strong bricks. His brothers laughed at him. "Why are you working so hard? Come play with us!"
 
 But Brick said, "I want to build a house that will keep me safe."`,
-        image: "/src/assets/three-pigs-2.jpg"
+        image: "/src/assets/three-pigs-1.jpg"
       },
       {
         text: `One day, a wolf came to the forest. He was very hungry and saw the three houses.
@@ -87,7 +88,8 @@ Next, the wolf went to Stick's house. "Little pigs, little pigs, let me come in!
 
 "Not by the hair on our chinny-chin-chins!" they said.
 
-The wolf huffed and puffed and blew down the stick house too! Both pigs ran to Brick's house.`
+The wolf huffed and puffed and blew down the stick house too! Both pigs ran to Brick's house.`,
+        image: "/src/assets/three-pigs-2.jpg"
       },
       {
         text: `When the wolf reached the brick house, he huffed and puffed with all his might, but the house stood strong!
@@ -125,7 +127,7 @@ Hopper laughed. "Winter is so far away! Don't worry about it now. Come dance wit
 But Annie continued working. "I want to be ready," she said kindly. "You should think about winter too."
 
 "I'll worry about that later," said Hopper, and he continued playing his music.`,
-        image: "/src/assets/ant-grasshopper-2.jpg"
+        image: "/src/assets/ant-grasshopper-1.jpg"
       },
       {
         text: `When winter arrived, snow covered the ground. There were no flowers, no seeds, and no food to be found anywhere.
@@ -141,6 +143,12 @@ Annie looked at her friend with kind eyes. "Of course, Hopper. Come in and warm 
 "It's okay," said Annie. "But next summer, maybe we can work together in the mornings and play together in the afternoons!"
 
 Hopper agreed happily. From the next summer on, he spent his mornings helping Annie collect food, and his afternoons they both enjoyed music and dancing together.
+
+They learned that work and play can both have their place in life!`,
+        image: "/src/assets/ant-grasshopper-2.jpg"
+      },
+      {
+        text: `Hopper agreed happily. From the next summer on, he spent his mornings helping Annie collect food, and his afternoons they both enjoyed music and dancing together.
 
 They learned that work and play can both have their place in life!`,
         image: "/src/assets/ant-grasshopper-3.jpg"

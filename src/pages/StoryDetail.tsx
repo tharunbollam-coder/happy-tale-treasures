@@ -87,41 +87,92 @@ const StoryDetail = () => {
         </div>
 
         {/* Story Content */}
-        <Card className="mb-8">
-          <CardHeader>
-            <h2 className="font-kid text-2xl text-foreground flex items-center gap-2">
-              📖 The Story
+        <div className="space-y-8">
+          <div className="text-center mb-8">
+            <h2 className="font-kid text-3xl text-foreground flex items-center justify-center gap-3 mb-4">
+              📖 <span className="animate-pulse">Let's Read Together!</span> 📚
             </h2>
-          </CardHeader>
-          <CardContent className="space-y-8">
-            {story.content.map((section, index) => (
-              <div key={index} className="space-y-6">
-                {/* Text Section */}
-                <div className="prose prose-lg max-w-none">
-                  {section.text.split('\n\n').map((paragraph, pIndex) => (
-                    <p key={pIndex} className="font-comic text-foreground leading-relaxed mb-4 text-lg">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                
-                {/* Image Section */}
-                {section.image && (
-                  <div className="flex justify-center">
-                    <div className="relative rounded-2xl overflow-hidden border-4 border-rainbow-yellow/30 shadow-xl max-w-2xl w-full">
-                      <img 
-                        src={section.image} 
-                        alt={`Story illustration ${index + 1}`}
-                        className="w-full h-auto object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+            <div className="flex justify-center gap-4">
+              <div className="bg-rainbow-red/20 px-4 py-2 rounded-full font-comic text-sm">
+                🎯 Follow along with the pictures!
+              </div>
+              <div className="bg-rainbow-blue/20 px-4 py-2 rounded-full font-comic text-sm">
+                🌟 Can you spot the lesson?
+              </div>
+            </div>
+          </div>
+
+          {story.content.map((section, index) => (
+            <div key={index} className="space-y-8">
+              {/* Large Image Section - More Prominent */}
+              {section.image && (
+                <div className="relative">
+                  <div className="text-center mb-4">
+                    <div className="inline-flex items-center gap-2 bg-accent/20 px-6 py-3 rounded-full border-2 border-accent/30">
+                      <span className="text-2xl">🎨</span>
+                      <span className="font-kid text-xl text-accent font-bold">
+                        Scene {index + 1}
+                      </span>
+                      <span className="text-2xl">✨</span>
                     </div>
                   </div>
-                )}
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+                  
+                  <div className="relative rounded-3xl overflow-hidden border-4 border-gradient-to-r from-rainbow-red/40 via-rainbow-yellow/40 to-rainbow-blue/40 shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-rainbow-purple/30">
+                    <img 
+                      src={section.image} 
+                      alt={`Story scene ${index + 1}: ${section.text.substring(0, 100)}...`}
+                      className="w-full h-64 md:h-80 lg:h-96 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+                    
+                    {/* Fun floating elements */}
+                    <div className="absolute top-4 right-4 animate-bounce">
+                      <div className="bg-white/90 rounded-full p-2 shadow-lg">
+                        <span className="text-2xl">🌟</span>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 left-4 animate-pulse">
+                      <div className="bg-white/90 rounded-full p-2 shadow-lg">
+                        <span className="text-xl">📖</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Text Section - More Engaging */}
+              <Card className="bg-gradient-to-br from-card/50 to-secondary/20 border-2 border-dashed border-accent/30 shadow-lg hover:shadow-xl transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="space-y-6">
+                    {section.text.split('\n\n').map((paragraph, pIndex) => (
+                      <div key={pIndex} className="relative">
+                        <div className="absolute -left-6 top-0 text-3xl opacity-20">
+                          {pIndex === 0 ? "📝" : "✨"}
+                        </div>
+                        <p className="font-comic text-foreground leading-relaxed text-lg md:text-xl pl-4 hover:pl-6 transition-all duration-200">
+                          {paragraph}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Interactive elements for engagement */}
+                  <div className="mt-6 flex flex-wrap justify-center gap-3">
+                    <button className="bg-rainbow-yellow/30 hover:bg-rainbow-yellow/50 px-4 py-2 rounded-full border-2 border-rainbow-yellow/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                      🔊 Read Aloud
+                    </button>
+                    <button className="bg-rainbow-green/30 hover:bg-rainbow-green/50 px-4 py-2 rounded-full border-2 border-rainbow-green/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                      🎭 Act It Out!
+                    </button>
+                    <button className="bg-rainbow-purple/30 hover:bg-rainbow-purple/50 px-4 py-2 rounded-full border-2 border-rainbow-purple/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                      💭 What happens next?
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
 
         {/* Moral Lesson */}
         <Card className="mb-8 bg-gradient-to-br from-secondary/50 to-accent/30 border-2 border-accent/30">
