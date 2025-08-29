@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +8,7 @@ import { ArrowLeft, Clock, Users, Lightbulb, Heart } from "lucide-react";
 const StoryDetail = () => {
   const { id } = useParams<{ id: string }>();
   const story = stories.find((s) => s.id === id);
+  const navigate = useNavigate();
 
   if (!story) {
     return (
@@ -161,9 +162,6 @@ const StoryDetail = () => {
                     <button className="bg-rainbow-yellow/30 hover:bg-rainbow-yellow/50 px-4 py-2 rounded-full border-2 border-rainbow-yellow/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
                       🔊 Read Aloud
                     </button>
-                    <button className="bg-rainbow-green/30 hover:bg-rainbow-green/50 px-4 py-2 rounded-full border-2 border-rainbow-green/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
-                      🎭 Act It Out!
-                    </button>
                     <button className="bg-rainbow-purple/30 hover:bg-rainbow-purple/50 px-4 py-2 rounded-full border-2 border-rainbow-purple/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
                       💭 What happens next?
                     </button>
@@ -175,7 +173,7 @@ const StoryDetail = () => {
         </div>
 
         {/* Reading Progress & Activities */}
-        <div className="mb-8 space-y-6">
+        <div className="mb-8 mt-12 space-y-6">
           <Card className="bg-gradient-to-br from-rainbow-green/20 to-rainbow-blue/20 border-2 border-rainbow-green/30">
             <CardHeader>
               <h2 className="font-kid text-2xl text-foreground flex items-center gap-2">
@@ -190,7 +188,10 @@ const StoryDetail = () => {
                       📚 Reading Challenge
                     </h3>
                     <div className="space-y-2">
-                      <button className="w-full bg-rainbow-yellow/30 hover:bg-rainbow-yellow/50 px-4 py-3 rounded-lg border-2 border-rainbow-yellow/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                      <button 
+                        onClick={() => navigate(`/spelling-game/${id}`)}
+                        className="w-full bg-rainbow-yellow/30 hover:bg-rainbow-yellow/50 px-4 py-3 rounded-lg border-2 border-rainbow-yellow/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105"
+                      >
                         🔤 Spell the Characters' Names
                       </button>
                       <button className="w-full bg-rainbow-blue/30 hover:bg-rainbow-blue/50 px-4 py-3 rounded-lg border-2 border-rainbow-blue/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
@@ -206,7 +207,10 @@ const StoryDetail = () => {
                       🧠 Think & Learn
                     </h3>
                     <div className="space-y-2">
-                      <button className="w-full bg-rainbow-purple/30 hover:bg-rainbow-purple/50 px-4 py-3 rounded-lg border-2 border-rainbow-purple/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                      <button 
+                        onClick={() => navigate(`/story-questions/${id}`)}
+                        className="w-full bg-rainbow-purple/30 hover:bg-rainbow-purple/50 px-4 py-3 rounded-lg border-2 border-rainbow-purple/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105"
+                      >
                         ❓ Story Questions
                       </button>
                       <button className="w-full bg-rainbow-green/30 hover:bg-rainbow-green/50 px-4 py-3 rounded-lg border-2 border-rainbow-green/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">

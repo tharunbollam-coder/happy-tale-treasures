@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Stories from "./pages/Stories";
 import StoryDetail from "./pages/StoryDetail";
+import SpellingGame from "./pages/SpellingGame";
+import StoryQuestions from "./pages/StoryQuestions";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 
@@ -22,6 +24,8 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/stories" element={<Stories />} />
             <Route path="/story/:id" element={<StoryDetail />} />
+            <Route path="/spelling-game/:id" element={<SpellingGame />} />
+            <Route path="/story-questions/:id" element={<StoryQuestions />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
