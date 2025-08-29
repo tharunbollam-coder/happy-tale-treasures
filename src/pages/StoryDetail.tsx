@@ -174,8 +174,73 @@ const StoryDetail = () => {
           ))}
         </div>
 
+        {/* Reading Progress & Activities */}
+        <div className="mb-8 space-y-6">
+          <Card className="bg-gradient-to-br from-rainbow-green/20 to-rainbow-blue/20 border-2 border-rainbow-green/30">
+            <CardHeader>
+              <h2 className="font-kid text-2xl text-foreground flex items-center gap-2">
+                🎯 <span className="animate-pulse">Reading Activities</span>
+              </h2>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-3">
+                  <div className="bg-white/50 p-4 rounded-xl border-2 border-rainbow-yellow/40">
+                    <h3 className="font-comic font-bold text-rainbow-yellow mb-2 flex items-center gap-2">
+                      📚 Reading Challenge
+                    </h3>
+                    <div className="space-y-2">
+                      <button className="w-full bg-rainbow-yellow/30 hover:bg-rainbow-yellow/50 px-4 py-3 rounded-lg border-2 border-rainbow-yellow/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                        🔤 Spell the Characters' Names
+                      </button>
+                      <button className="w-full bg-rainbow-blue/30 hover:bg-rainbow-blue/50 px-4 py-3 rounded-lg border-2 border-rainbow-blue/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                        📖 Read Aloud Practice
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="bg-white/50 p-4 rounded-xl border-2 border-rainbow-purple/40">
+                    <h3 className="font-comic font-bold text-rainbow-purple mb-2 flex items-center gap-2">
+                      🧠 Think & Learn
+                    </h3>
+                    <div className="space-y-2">
+                      <button className="w-full bg-rainbow-purple/30 hover:bg-rainbow-purple/50 px-4 py-3 rounded-lg border-2 border-rainbow-purple/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                        ❓ Story Questions
+                      </button>
+                      <button className="w-full bg-rainbow-green/30 hover:bg-rainbow-green/50 px-4 py-3 rounded-lg border-2 border-rainbow-green/50 font-comic font-bold text-sm transition-all duration-200 hover:scale-105">
+                        🎨 Draw Your Favorite Scene
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-6 bg-gradient-to-r from-rainbow-red/20 via-rainbow-yellow/20 to-rainbow-green/20 p-4 rounded-xl border-2 border-dashed border-accent/40">
+                <div className="text-center">
+                  <h3 className="font-kid text-xl text-foreground mb-3 flex items-center justify-center gap-2">
+                    🌟 Reading Level: Perfect for You! 🌟
+                  </h3>
+                  <div className="flex justify-center gap-4 flex-wrap">
+                    <div className="bg-white/70 px-4 py-2 rounded-full border-2 border-rainbow-blue/40">
+                      <span className="font-comic font-bold text-sm">📏 {story.readingTime}</span>
+                    </div>
+                    <div className="bg-white/70 px-4 py-2 rounded-full border-2 border-rainbow-green/40">
+                      <span className="font-comic font-bold text-sm">👥 {story.ageGroup}</span>
+                    </div>
+                    <div className="bg-white/70 px-4 py-2 rounded-full border-2 border-rainbow-purple/40">
+                      <span className="font-comic font-bold text-sm">✨ Safe & Educational</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Moral Lesson */}
-        <Card className="mb-8 bg-gradient-to-br from-secondary/50 to-accent/30 border-2 border-accent/30">
+        <Card className="mb-8 mt-12 bg-gradient-to-br from-secondary/50 to-accent/30 border-2 border-accent/30">
           <CardHeader>
             <h2 className="font-kid text-2xl text-foreground flex items-center gap-2">
               <Lightbulb className="w-8 h-8 text-accent" />
