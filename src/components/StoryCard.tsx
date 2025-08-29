@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Clock, Users, BookOpen } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import LazyImage from "@/components/LazyImage";
 import { Story } from "@/data/stories";
 
 interface StoryCardProps {
@@ -14,10 +15,12 @@ const StoryCard = ({ story }: StoryCardProps) => {
       <Card className="group hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden border-2 border-border bg-gradient-to-br from-card to-secondary/30">
         <CardHeader className="p-0">
           <div className="relative overflow-hidden rounded-t-lg">
-            <img 
+            <LazyImage 
               src={story.image} 
-              alt={story.title}
+              alt={`${story.title} - Educational ${story.category.toLowerCase()} story for children ages ${story.ageGroup} teaching about ${story.moralLesson.toLowerCase()}`}
               className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={200}
             />
             <div className="absolute top-3 right-3">
               <Badge variant="secondary" className="bg-accent text-accent-foreground font-comic font-bold shadow-lg">

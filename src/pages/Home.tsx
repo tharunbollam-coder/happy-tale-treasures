@@ -1,15 +1,29 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import StoryCard from "@/components/StoryCard";
+import SEO from "@/components/SEO";
 import { stories } from "@/data/stories";
 import { Sparkles, Star, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-stories.jpg";
+import { generateWebsiteSchema, generateFAQSchema } from "@/utils/seo";
 
 const Home = () => {
   const featuredStories = stories.slice(0, 3);
 
+  const combinedSchema = [
+    generateWebsiteSchema(),
+    generateFAQSchema()
+  ];
+
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="KidsStories - Educational Tales That Teach Life Lessons | Interactive Reading for Kids"
+        description="Discover magical educational stories for children ages 3-12. Interactive tales with moral lessons, reading activities, spelling games, and comprehension questions. Safe, fun learning!"
+        keywords="kids stories, educational stories for children, moral lessons kids, interactive reading activities, children's books online, bedtime stories with lessons, reading comprehension games, spelling activities for kids"
+        schemaData={combinedSchema}
+      />
+      
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-soft overflow-hidden">
         <div className="absolute inset-0 bg-gradient-rainbow opacity-10"></div>
@@ -17,8 +31,11 @@ const Home = () => {
           <div className="mb-8">
             <img 
               src={heroImage} 
-              alt="Magical storybook world" 
+              alt="Magical children's storybook with colorful illustrations showing fairy tale characters and educational themes for kids learning" 
               className="mx-auto rounded-3xl shadow-2xl max-w-4xl w-full h-64 md:h-96 object-cover"
+              loading="eager"
+              width="800"
+              height="400"
             />
           </div>
           
@@ -60,10 +77,10 @@ const Home = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-kid text-3xl md:text-4xl text-foreground mb-4">
-              ✨ Featured Stories ✨
+              ✨ Featured Educational Stories ✨
             </h2>
             <p className="font-comic text-lg text-muted-foreground max-w-2xl mx-auto">
-              Start your reading adventure with these wonderful tales!
+              Start your reading adventure with these wonderful tales full of life lessons!
             </p>
           </div>
           
@@ -79,6 +96,7 @@ const Home = () => {
                 variant="outline" 
                 size="lg" 
                 className="font-comic font-bold text-lg px-8 py-4 rounded-full border-2 hover:scale-105 transition-all duration-200"
+                aria-label="View all educational stories for children"
               >
                 See All Stories →
               </Button>
@@ -90,32 +108,32 @@ const Home = () => {
       {/* Benefits Section */}
       <section className="py-16 px-4 bg-secondary/30">
         <div className="container mx-auto text-center">
-          <h2 className="font-kid text-3xl md:text-4xl text-foreground mb-12">
-            Why Kids Love Our Stories? 🎈
-          </h2>
+          <h3 className="font-kid text-3xl md:text-4xl text-foreground mb-12">
+            Why Kids Love Our Educational Stories? 🎈
+          </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-rainbow-blue/20">
-              <div className="text-6xl mb-4">📚</div>
-              <h3 className="font-kid text-xl mb-3 text-foreground">Educational</h3>
+              <div className="text-6xl mb-4" role="img" aria-label="Books emoji">📚</div>
+              <h4 className="font-kid text-xl mb-3 text-foreground">Educational Content</h4>
               <p className="font-comic text-muted-foreground">
-                Every story teaches important life lessons about friendship, honesty, and kindness!
+                Every story teaches important life lessons about friendship, honesty, kindness, and moral values that shape character!
               </p>
             </div>
             
             <div className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-rainbow-green/20">
-              <div className="text-6xl mb-4">🎨</div>
-              <h3 className="font-kid text-xl mb-3 text-foreground">Colorful</h3>
+              <div className="text-6xl mb-4" role="img" aria-label="Art palette emoji">🎨</div>
+              <h4 className="font-kid text-xl mb-3 text-foreground">Interactive Learning</h4>
               <p className="font-comic text-muted-foreground">
-                Beautiful illustrations and vibrant designs make reading fun and engaging!
+                Beautiful illustrations, spelling games, comprehension questions, and interactive activities make reading engaging and fun!
               </p>
             </div>
             
             <div className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-rainbow-purple/20">
-              <div className="text-6xl mb-4">❤️</div>
-              <h3 className="font-kid text-xl mb-3 text-foreground">Safe</h3>
+              <div className="text-6xl mb-4" role="img" aria-label="Heart emoji">❤️</div>
+              <h4 className="font-kid text-xl mb-3 text-foreground">Child-Safe Environment</h4>
               <p className="font-comic text-muted-foreground">
-                All our stories are carefully crafted to be appropriate and positive for children!
+                All our stories are carefully curated to be age-appropriate, positive, and completely safe for children of all ages!
               </p>
             </div>
           </div>

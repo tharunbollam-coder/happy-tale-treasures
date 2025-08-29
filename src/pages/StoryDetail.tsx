@@ -2,8 +2,12 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import LazyImage from "@/components/LazyImage";
 import { stories } from "@/data/stories";
 import { ArrowLeft, Clock, Users, Lightbulb, Heart } from "lucide-react";
+import { generateStorySchema, generateStoryMetaDescription, generateStoryKeywords, generateBreadcrumbSchema } from "@/utils/seo";
 
 const StoryDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -13,14 +17,18 @@ const StoryDetail = () => {
   if (!story) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <SEO 
+          title="Story Not Found | KidsStories"
+          description="The requested story could not be found. Explore our collection of educational stories for children."
+        />
         <div className="text-center">
-          <div className="text-6xl mb-4">😢</div>
+          <div className="text-6xl mb-4" role="img" aria-label="Sad face emoji">😢</div>
           <h1 className="font-kid text-3xl text-foreground mb-4">Story Not Found</h1>
           <p className="font-comic text-muted-foreground mb-6">
             Oops! We couldn't find that story. Let's go back and find another adventure!
           </p>
           <Link to="/stories">
-            <Button className="font-comic font-bold">
+            <Button className="font-comic font-bold" aria-label="Return to stories list">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Stories
             </Button>
@@ -30,13 +38,37 @@ const StoryDetail = () => {
     );
   }
 
+  // Generate SEO data for this specific story
+  const storySchema = generateStorySchema(story);
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'All Stories', href: '/stories' },
+    { label: story.title, href: `/story/${story.id}` }
+  ];
+  const breadcrumbSchema = generateBreadcrumbSchema(
+    breadcrumbItems.map(item => ({ name: item.label, url: `${window.location.origin}${item.href}` }))
+  );
+  const combinedSchema = [storySchema, breadcrumbSchema];
+
   return (
     <div className="min-h-screen py-8 px-4">
+      <SEO 
+        title={`${story.title} - Educational Story for Kids Ages ${story.ageGroup} | KidsStories`}
+        description={generateStoryMetaDescription(story)}
+        keywords={generateStoryKeywords(story)}
+        image={story.image}
+        url={`/story/${story.id}`}
+        type="article"
+        schemaData={combinedSchema}
+      />
+      
       <div className="container mx-auto max-w-4xl">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         {/* Back Button */}
         <div className="mb-6">
           <Link to="/stories">
-            <Button variant="outline" className="font-comic font-bold rounded-full">
+            <Button variant="outline" className="font-comic font-bold rounded-full" aria-label="Return to all stories">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Stories
             </Button>
@@ -47,10 +79,13 @@ const StoryDetail = () => {
         <Card className="mb-8 overflow-hidden border-2 border-border bg-gradient-to-br from-card to-secondary/20">
           <CardHeader className="p-0">
             <div className="relative">
-              <img 
+              <LazyImage 
                 src={story.image} 
-                alt={story.title}
+                alt={`${story.title} - Educational story illustration for children showing moral lesson about ${story.moralLesson.toLowerCase()}`}
                 className="w-full h-64 md:h-96 object-cover"
+                width={800}
+                height={400}
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
@@ -119,10 +154,12 @@ const StoryDetail = () => {
                   </div>
                   
                   <div className="relative rounded-3xl overflow-hidden border-4 border-gradient-to-r from-rainbow-red/40 via-rainbow-yellow/40 to-rainbow-blue/40 shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-rainbow-purple/30">
-                    <img 
+                    <LazyImage 
                       src={section.image} 
-                      alt={`Story scene ${index + 1}: ${section.text.substring(0, 100)}...`}
+                      alt={`Educational story scene ${index + 1} from ${story.title}: ${section.text.substring(0, 100)}... - Teaching children about ${story.moralLesson.toLowerCase()}`}
                       className="w-full h-64 md:h-80 lg:h-96 object-cover"
+                      width={800}
+                      height={400}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
                     
@@ -261,12 +298,21 @@ const StoryDetail = () => {
         {/* Navigation */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/stories">
-            <Button variant="outline" size="lg" className="font-comic font-bold rounded-full w-full sm:w-auto">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="font-comic font-bold rounded-full w-full sm:w-auto"
+              aria-label="Browse more educational stories for children"
+            >
               📚 Read Another Story
             </Button>
           </Link>
           <Link to="/">
-            <Button size="lg" className="font-comic font-bold rounded-full w-full sm:w-auto">
+            <Button 
+              size="lg" 
+              className="font-comic font-bold rounded-full w-full sm:w-auto"
+              aria-label="Return to KidsStories homepage"
+            >
               🏠 Go Home
             </Button>
           </Link>

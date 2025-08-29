@@ -1,8 +1,10 @@
 User-agent: Googlebot
 Allow: /
+Sitemap: https://your-domain.com/sitemap.xml
 
 User-agent: Bingbot
 Allow: /
+Sitemap: https://your-domain.com/sitemap.xml
 
 User-agent: Twitterbot
 Allow: /
@@ -12,3 +14,20 @@ Allow: /
 
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Optimize crawling
+User-agent: *
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /stories
+Allow: /story/*
+Allow: /spelling-game/*
+Allow: /story-questions/*
+
+Sitemap: https://your-domain.com/sitemap.xml
