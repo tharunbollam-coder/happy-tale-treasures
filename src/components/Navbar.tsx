@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Book, Home, Library } from "lucide-react";
+import { Book, Home, Library, BookMarked } from "lucide-react";
 
 const Navbar = () => {
   const location = useLocation();
@@ -8,6 +8,7 @@ const Navbar = () => {
   const navItems = [
     { path: "/", label: "Home", icon: Home },
     { path: "/stories", label: "All Stories", icon: Library },
+    { path: "/series", label: "Series", icon: BookMarked },
   ];
 
   return (

@@ -105,6 +105,62 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Story Series Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-kid text-3xl md:text-4xl text-foreground mb-4">
+              📖 New: Story Series! 📖
+            </h2>
+            <p className="font-comic text-lg text-muted-foreground max-w-2xl mx-auto">
+              Follow amazing adventures chapter by chapter! Just like your favorite shows, but in stories!
+            </p>
+          </div>
+          
+          <div className="bg-card/80 backdrop-blur-sm rounded-3xl p-8 border border-border/50 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <Star className="w-6 h-6 text-yellow-500 fill-current" />
+                  <span className="font-comic font-bold text-primary">NEW CHAPTERS WEEKLY!</span>
+                </div>
+                <h3 className="font-kid text-2xl text-foreground mb-4">
+                  The Magic Forest Adventures
+                </h3>
+                <p className="font-comic text-muted-foreground mb-6">
+                  Join Luna and her magical friends on weekly adventures! Each chapter brings new mysteries, 
+                  friendships, and lessons in this ongoing series.
+                </p>
+                <div className="flex gap-3">
+                  <Link to="/series">
+                    <Button size="lg" className="font-comic font-bold">
+                      <Sparkles className="w-5 h-5 mr-2" />
+                      Explore Series
+                    </Button>
+                  </Link>
+                  <Link to="/series/magic-forest-adventures/chapter/chapter-1">
+                    <Button variant="outline" size="lg" className="font-comic font-bold">
+                      Start Reading →
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/src/assets/magic-forest.jpg" 
+                  alt="The Magic Forest Adventures series cover showing Luna and magical creatures in an enchanted forest"
+                  className="w-full rounded-2xl shadow-2xl"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-comic font-bold">
+                  Chapter 3 Available!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-16 px-4 bg-secondary/30">
         <div className="container mx-auto text-center">

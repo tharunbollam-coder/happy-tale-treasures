@@ -9,6 +9,9 @@ import Stories from "./pages/Stories";
 import StoryDetail from "./pages/StoryDetail";
 import SpellingGame from "./pages/SpellingGame";
 import StoryQuestions from "./pages/StoryQuestions";
+import Series from "./pages/Series";
+import SeriesDetail from "./pages/SeriesDetail";
+import ChapterDetail from "./pages/ChapterDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
@@ -32,6 +35,9 @@ const App = () => (
               <Route path="/story/:id" element={<StoryDetail />} />
               <Route path="/spelling-game/:id" element={<SpellingGame />} />
               <Route path="/story-questions/:id" element={<StoryQuestions />} />
+              <Route path="/series" element={<Series />} />
+              <Route path="/series/:id" element={<SeriesDetail />} />
+              <Route path="/series/:seriesId/chapter/:chapterId" element={<ChapterDetail />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy" element={<Privacy />} />
