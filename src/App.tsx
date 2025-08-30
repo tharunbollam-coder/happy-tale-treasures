@@ -9,6 +9,10 @@ import Stories from "./pages/Stories";
 import StoryDetail from "./pages/StoryDetail";
 import SpellingGame from "./pages/SpellingGame";
 import StoryQuestions from "./pages/StoryQuestions";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 
@@ -28,6 +32,10 @@ const App = () => (
               <Route path="/story/:id" element={<StoryDetail />} />
               <Route path="/spelling-game/:id" element={<SpellingGame />} />
               <Route path="/story-questions/:id" element={<StoryQuestions />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
