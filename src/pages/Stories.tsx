@@ -8,6 +8,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Stories = () => {
   const websiteSchema = generateWebsiteSchema();
@@ -72,7 +73,7 @@ const Stories = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="relative lg:col-span-2">
+            <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search stories..."
@@ -82,53 +83,41 @@ const Stories = () => {
               />
             </div>
             
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-muted-foreground">Category</label>
-              <div className="flex flex-wrap gap-1">
-                {categories.map(category => (
-                  <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedCategory(selectedCategory === category ? "" : category)}
-                    className="text-xs h-8"
-                  >
+            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <SelectTrigger>
+                <SelectValue placeholder="Category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="">All Categories</SelectItem>
+                {categories.map((category) => (
+                  <SelectItem key={category} value={category}>
                     {category}
-                  </Button>
+                  </SelectItem>
                 ))}
-              </div>
-            </div>
+              </SelectContent>
+            </Select>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-muted-foreground">Age Group</label>
-              <div className="flex flex-wrap gap-1">
-                {ageGroups.map(ageGroup => (
-                  <Button
-                    key={ageGroup}
-                    variant={selectedAgeGroup === ageGroup ? "secondary" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedAgeGroup(selectedAgeGroup === ageGroup ? "" : ageGroup)}
-                    className="text-xs h-8"
-                  >
+            <Select value={selectedAgeGroup} onValueChange={setSelectedAgeGroup}>
+              <SelectTrigger>
+                <SelectValue placeholder="Age Group" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="">All Ages</SelectItem>
+                {ageGroups.map((ageGroup) => (
+                  <SelectItem key={ageGroup} value={ageGroup}>
                     {ageGroup}
-                  </Button>
+                  </SelectItem>
                 ))}
-              </div>
-            </div>
-          </div>
+              </SelectContent>
+            </Select>
 
-          {/* Clear Filters Button */}
-          {(searchTerm || selectedCategory || selectedAgeGroup) && (
-            <div className="mt-4 flex justify-center">
-              <Button
-                onClick={clearFilters}
-                variant="outline"
-                size="sm"
-              >
-                Clear All Filters
-              </Button>
-            </div>
-          )}
+            <Button 
+              onClick={clearFilters}
+              variant="outline"
+            >
+              Clear Filters
+            </Button>
+          </div>
         </div>
 
         {/* Stats */}

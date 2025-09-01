@@ -114,25 +114,27 @@ const ChapterDetail = () => {
           </div>
 
           {/* Chapter Navigation */}
-          <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
+          <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-4 md:p-6">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              {/* Previous Chapter */}
+              <div className="w-full sm:flex-1">
                 {previousChapter && previousChapter.isPublished ? (
-                  <Link to={`/series/${seriesId}/chapter/${previousChapter.id}`}>
-                    <Button variant="outline" className="group">
-                      <ChevronLeft className="w-4 h-4 mr-2" />
-                      <div className="text-left">
+                  <Link to={`/series/${seriesId}/chapter/${previousChapter.id}`} className="block">
+                    <Button variant="outline" className="group w-full sm:w-auto">
+                      <ChevronLeft className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <div className="text-left min-w-0">
                         <div className="text-xs text-muted-foreground">Previous</div>
-                        <div className="font-comic">Chapter {previousChapter.chapterNumber}</div>
+                        <div className="font-comic truncate">Ch. {previousChapter.chapterNumber}</div>
                       </div>
                     </Button>
                   </Link>
                 ) : (
-                  <div></div>
+                  <div className="hidden sm:block"></div>
                 )}
               </div>
               
-              <div className="flex-shrink-0 mx-4">
+              {/* All Chapters Button */}
+              <div className="flex-shrink-0 order-first sm:order-none">
                 <Link to={`/series/${seriesId}`}>
                   <Button variant="secondary" className="font-comic">
                     All Chapters
@@ -140,29 +142,30 @@ const ChapterDetail = () => {
                 </Link>
               </div>
               
-              <div className="flex-1 flex justify-end">
+              {/* Next Chapter */}
+              <div className="w-full sm:flex-1 flex justify-end">
                 {nextChapter ? (
                   nextChapter.isPublished ? (
-                    <Link to={`/series/${seriesId}/chapter/${nextChapter.id}`}>
-                      <Button className="group">
-                        <div className="text-right">
+                    <Link to={`/series/${seriesId}/chapter/${nextChapter.id}`} className="block">
+                      <Button className="group w-full sm:w-auto">
+                        <div className="text-right min-w-0">
                           <div className="text-xs opacity-80">Next</div>
-                          <div className="font-comic">Chapter {nextChapter.chapterNumber}</div>
+                          <div className="font-comic truncate">Ch. {nextChapter.chapterNumber}</div>
                         </div>
-                        <ChevronRight className="w-4 h-4 ml-2" />
+                        <ChevronRight className="w-4 h-4 ml-2 flex-shrink-0" />
                       </Button>
                     </Link>
                   ) : (
-                    <Button disabled className="group">
-                      <div className="text-right">
+                    <Button disabled className="group w-full sm:w-auto">
+                      <div className="text-right min-w-0">
                         <div className="text-xs opacity-60">Coming Soon</div>
-                        <div className="font-comic">Chapter {nextChapter.chapterNumber}</div>
+                        <div className="font-comic truncate">Ch. {nextChapter.chapterNumber}</div>
                       </div>
-                      <ChevronRight className="w-4 h-4 ml-2" />
+                      <ChevronRight className="w-4 h-4 ml-2 flex-shrink-0" />
                     </Button>
                   )
                 ) : (
-                  <div></div>
+                  <div className="hidden sm:block"></div>
                 )}
               </div>
             </div>
