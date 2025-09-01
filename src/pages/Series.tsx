@@ -141,30 +141,38 @@ const Series = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredSeries.map((s) => (
               <Link key={s.id} to={`/series/${s.id}`}>
-                <Card className="group hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
-                  <div className="relative">
-                    <LazyImage
-                      src={s.coverImage}
-                      alt={s.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="absolute top-4 right-4">
-                      <Badge className={getStatusColor(s.status)}>
-                        {s.status.charAt(0).toUpperCase() + s.status.slice(1)}
-                      </Badge>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="bg-black/70 backdrop-blur-sm rounded-lg p-2 text-white">
-                        <div className="text-sm font-medium mb-1">
+              <Card className="group hover:shadow-elegant hover:scale-[1.02] transition-all duration-300 bg-card/90 backdrop-blur-sm border-border/50 overflow-hidden">
+                <div className="relative">
+                  <LazyImage
+                    src={s.coverImage}
+                    alt={s.title}
+                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute top-4 right-4">
+                    <Badge className={`${getStatusColor(s.status)} shadow-md`}>
+                      {s.status.charAt(0).toUpperCase() + s.status.slice(1)}
+                    </Badge>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-white/95 dark:bg-card/95 backdrop-blur-md rounded-xl p-3 shadow-lg border border-white/20">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-foreground">
                           {s.publishedChapters} of {s.totalChapters} chapters
-                        </div>
-                        <Progress 
-                          value={(s.publishedChapters / s.totalChapters) * 100} 
-                          className="h-2"
+                        </span>
+                        <span className="text-xs font-bold text-primary">
+                          {Math.round((s.publishedChapters / s.totalChapters) * 100)}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-secondary/30 rounded-full h-2 overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full transition-all duration-300"
+                          style={{ width: `${(s.publishedChapters / s.totalChapters) * 100}%` }}
                         />
                       </div>
                     </div>
                   </div>
+                </div>
                   
                   <CardHeader>
                     <div className="flex justify-between items-start mb-2">

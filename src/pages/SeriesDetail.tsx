@@ -55,13 +55,13 @@ const SeriesDetail = () => {
           
           {/* Hero Section */}
           <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl overflow-hidden mb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 p-4 sm:p-6 lg:p-8">
               <div className="lg:col-span-1">
                 <div className="relative">
                   <LazyImage
                     src={currentSeries.coverImage}
                     alt={currentSeries.title}
-                    className="w-full rounded-xl shadow-2xl"
+                    className="w-full aspect-[3/4] rounded-xl shadow-2xl object-cover"
                   />
                   <div className="absolute top-4 right-4">
                     <Badge className={getStatusColor(currentSeries.status)}>
@@ -71,72 +71,82 @@ const SeriesDetail = () => {
                 </div>
               </div>
               
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-4 lg:space-y-6">
                 <div>
                   <Badge variant="secondary" className="mb-3">
                     {currentSeries.category}
                   </Badge>
-                  <h1 className="text-4xl md:text-5xl font-kid bg-gradient-rainbow bg-clip-text text-transparent mb-4">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-kid bg-gradient-rainbow bg-clip-text text-transparent mb-4 break-words">
                     {currentSeries.title}
                   </h1>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     {currentSeries.description}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   {currentSeries.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
+                    <Badge key={tag} variant="outline" className="text-xs">
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-secondary/20 rounded-lg">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+                  <div className="text-center p-3 lg:p-4 bg-secondary/20 rounded-lg">
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <Star className="w-5 h-5 text-yellow-500 fill-current" />
-                      <span className="text-2xl font-bold">{currentSeries.rating}</span>
+                      <Star className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500 fill-current" />
+                      <span className="text-lg lg:text-2xl font-bold">{currentSeries.rating}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Rating</p>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Rating</p>
                   </div>
                   
-                  <div className="text-center p-4 bg-secondary/20 rounded-lg">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-primary" />
-                      <span className="text-2xl font-bold">{currentSeries.subscribers.toLocaleString()}</span>
+                  <div className="text-center p-3 lg:p-4 bg-secondary/20 rounded-lg">
+                    <div className="flex flex-col items-center gap-1 mb-2">
+                      <Users className="w-4 h-4 lg:w-5 lg:h-5 text-primary" />
+                      <span className="text-sm lg:text-xl font-bold">{currentSeries.subscribers.toLocaleString()}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Subscribers</p>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Subscribers</p>
                   </div>
                   
-                  <div className="text-center p-4 bg-secondary/20 rounded-lg">
-                    <div className="text-2xl font-bold mb-2">
+                  <div className="text-center p-3 lg:p-4 bg-secondary/20 rounded-lg">
+                    <div className="text-lg lg:text-2xl font-bold mb-2">
                       {currentSeries.publishedChapters}/{currentSeries.totalChapters}
                     </div>
-                    <p className="text-sm text-muted-foreground">Chapters</p>
+                    <p className="text-xs lg:text-sm text-muted-foreground">Chapters</p>
                   </div>
                   
-                  <div className="text-center p-4 bg-secondary/20 rounded-lg">
+                  <div className="text-center p-3 lg:p-4 bg-secondary/20 rounded-lg">
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <Calendar className="w-5 h-5 text-primary" />
+                      <Calendar className="w-4 h-4 lg:w-5 lg:h-5 text-primary" />
                     </div>
-                    <p className="text-sm text-muted-foreground text-center">
+                    <p className="text-xs lg:text-sm text-muted-foreground text-center break-words">
                       {currentSeries.publishSchedule}
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Progress</span>
+                    <span className="text-sm font-medium">Story Progress</span>
                     <span className="text-sm text-muted-foreground">
-                      {Math.round((currentSeries.publishedChapters / currentSeries.totalChapters) * 100)}%
+                      {Math.round((currentSeries.publishedChapters / currentSeries.totalChapters) * 100)}% Complete
                     </span>
                   </div>
-                  <Progress 
-                    value={(currentSeries.publishedChapters / currentSeries.totalChapters) * 100} 
-                    className="h-3"
-                  />
+                  <div className="relative">
+                    <div className="w-full bg-secondary/30 rounded-full h-4 overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-primary via-primary/90 to-primary/80 rounded-full transition-all duration-500 relative"
+                        style={{ width: `${(currentSeries.publishedChapters / currentSeries.totalChapters) * 100}%` }}
+                      >
+                        <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full" />
+                      </div>
+                    </div>
+                    <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                      <span>Chapter 1</span>
+                      <span>Chapter {currentSeries.totalChapters}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -144,9 +154,9 @@ const SeriesDetail = () => {
 
           {/* Chapters List */}
           <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-3xl font-comic font-bold">Chapters</h2>
-              <Badge variant="outline">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <h2 className="text-2xl sm:text-3xl font-comic font-bold">Chapters</h2>
+              <Badge variant="outline" className="self-start sm:self-center">
                 Age: {currentSeries.ageGroup}
               </Badge>
             </div>
@@ -164,21 +174,21 @@ const SeriesDetail = () => {
                   <CardContent className="p-0">
                     {chapter.isPublished ? (
                       <Link to={`/series/${currentSeries.id}/chapter/${chapter.id}`} className="block">
-                        <div className="flex items-center gap-6 p-6">
-                          <div className="relative flex-shrink-0">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6">
+                          <div className="relative flex-shrink-0 w-full sm:w-auto">
                             <LazyImage
                               src={chapter.image}
                               alt={chapter.title}
-                              className="w-24 h-24 rounded-lg object-cover"
+                              className="w-full sm:w-20 lg:w-24 h-32 sm:h-20 lg:h-24 rounded-lg object-cover"
                             />
                             <div className="absolute inset-0 bg-primary/80 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                              <Play className="w-8 h-8 text-white" />
+                              <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                             </div>
                           </div>
                           
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-2">
-                              <Badge variant="secondary" className="text-xs">
+                          <div className="flex-1 min-w-0 w-full">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                              <Badge variant="secondary" className="text-xs w-fit">
                                 Chapter {chapter.chapterNumber}
                               </Badge>
                               {chapter.publishDate && (
@@ -187,7 +197,7 @@ const SeriesDetail = () => {
                                 </span>
                               )}
                             </div>
-                            <h3 className="text-xl font-comic font-bold mb-2 group-hover:text-primary transition-colors">
+                            <h3 className="text-lg sm:text-xl font-comic font-bold mb-2 group-hover:text-primary transition-colors break-words">
                               {chapter.title}
                             </h3>
                             <p className="text-muted-foreground text-sm line-clamp-2 mb-2">
@@ -201,25 +211,25 @@ const SeriesDetail = () => {
                             </div>
                           </div>
                           
-                          <ChevronRight className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                          <ChevronRight className="hidden sm:block w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
                         </div>
                       </Link>
                     ) : (
-                      <div className="flex items-center gap-6 p-6">
-                        <div className="relative flex-shrink-0">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6">
+                        <div className="relative flex-shrink-0 w-full sm:w-auto">
                           <LazyImage
                             src={chapter.image}
                             alt={chapter.title}
-                            className="w-24 h-24 rounded-lg object-cover grayscale"
+                            className="w-full sm:w-20 lg:w-24 h-32 sm:h-20 lg:h-24 rounded-lg object-cover grayscale"
                           />
                           <div className="absolute inset-0 bg-black/50 rounded-lg flex items-center justify-center">
-                            <Lock className="w-8 h-8 text-white" />
+                            <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                           </div>
                         </div>
                         
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Badge variant="outline" className="text-xs">
+                        <div className="flex-1 min-w-0 w-full">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                            <Badge variant="outline" className="text-xs w-fit">
                               Chapter {chapter.chapterNumber}
                             </Badge>
                             {chapter.publishDate && (
@@ -228,7 +238,7 @@ const SeriesDetail = () => {
                               </span>
                             )}
                           </div>
-                          <h3 className="text-xl font-comic font-bold mb-2 text-muted-foreground">
+                          <h3 className="text-lg sm:text-xl font-comic font-bold mb-2 text-muted-foreground break-words">
                             {chapter.title}
                           </h3>
                           <p className="text-muted-foreground text-sm line-clamp-2">
@@ -236,7 +246,7 @@ const SeriesDetail = () => {
                           </p>
                         </div>
                         
-                        <Lock className="w-6 h-6 text-muted-foreground flex-shrink-0" />
+                        <Lock className="hidden sm:block w-6 h-6 text-muted-foreground flex-shrink-0" />
                       </div>
                     )}
                   </CardContent>

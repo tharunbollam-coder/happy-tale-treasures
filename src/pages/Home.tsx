@@ -117,42 +117,42 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="bg-card/80 backdrop-blur-sm rounded-3xl p-8 border border-border/50 max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Star className="w-6 h-6 text-yellow-500 fill-current" />
-                  <span className="font-comic font-bold text-primary">NEW CHAPTERS WEEKLY!</span>
+          <div className="bg-card/80 backdrop-blur-sm rounded-3xl p-4 sm:p-6 lg:p-8 border border-border/50 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
+                  <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 fill-current flex-shrink-0" />
+                  <span className="font-comic font-bold text-primary text-sm sm:text-base">NEW CHAPTERS WEEKLY!</span>
                 </div>
-                <h3 className="font-kid text-2xl text-foreground mb-4">
+                <h3 className="font-kid text-xl sm:text-2xl lg:text-3xl text-foreground mb-3 sm:mb-4">
                   The Magic Forest Adventures
                 </h3>
-                <p className="font-comic text-muted-foreground mb-6">
+                <p className="font-comic text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
                   Join Luna and her magical friends on weekly adventures! Each chapter brings new mysteries, 
                   friendships, and lessons in this ongoing series.
                 </p>
-                <div className="flex gap-3">
-                  <Link to="/series">
-                    <Button size="lg" className="font-comic font-bold">
-                      <Sparkles className="w-5 h-5 mr-2" />
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link to="/series" className="w-full sm:w-auto">
+                    <Button size="lg" className="font-comic font-bold w-full sm:w-auto">
+                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                       Explore Series
                     </Button>
                   </Link>
-                  <Link to="/series/magic-forest-adventures/chapter/chapter-1">
-                    <Button variant="outline" size="lg" className="font-comic font-bold">
+                  <Link to="/series/magic-forest-adventures/chapter/chapter-1" className="w-full sm:w-auto">
+                    <Button variant="outline" size="lg" className="font-comic font-bold w-full sm:w-auto">
                       Start Reading →
                     </Button>
                   </Link>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative order-1 lg:order-2">
                 <img 
                   src="/src/assets/magic-forest.jpg" 
                   alt="The Magic Forest Adventures series cover showing Luna and magical creatures in an enchanted forest"
-                  className="w-full rounded-2xl shadow-2xl"
+                  className="w-full h-48 sm:h-64 lg:h-auto rounded-2xl shadow-2xl object-cover"
                   loading="lazy"
                 />
-                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-comic font-bold">
+                <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-comic font-bold">
                   Chapter 3 Available!
                 </div>
               </div>

@@ -65,101 +65,68 @@ const Stories = () => {
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-card p-6 rounded-3xl shadow-lg border border-border mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Search className="w-6 h-6 text-primary" />
-            <h2 className="font-kid text-xl text-foreground">Find Your Perfect Story</h2>
+        <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Filter className="w-5 h-5 text-primary" />
+            <h2 className="text-lg font-comic font-bold">Find Your Perfect Story</h2>
           </div>
           
-          {/* Search Bar */}
-          <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input
-              placeholder="Search stories, lessons, or characters..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 font-comic"
-            />
-          </div>
-
-          {/* Filters */}
-          <div className="flex flex-wrap gap-4 items-center">
-            <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-secondary" />
-              <span className="font-comic font-bold text-foreground">Filters:</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="relative lg:col-span-2">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Input
+                placeholder="Search stories..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
+              />
             </div>
             
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
-              <span className="font-comic text-sm text-muted-foreground">Category:</span>
-              {categories.map(category => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(selectedCategory === category ? "" : category)}
-                  className="font-comic text-xs"
-                >
-                  {category}
-                </Button>
-              ))}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-muted-foreground">Category</label>
+              <div className="flex flex-wrap gap-1">
+                {categories.map(category => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedCategory(selectedCategory === category ? "" : category)}
+                    className="text-xs h-8"
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
             </div>
 
-            {/* Age Group Filter */}
-            <div className="flex flex-wrap gap-2">
-              <span className="font-comic text-sm text-muted-foreground">Age:</span>
-              {ageGroups.map(ageGroup => (
-                <Button
-                  key={ageGroup}
-                  variant={selectedAgeGroup === ageGroup ? "secondary" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedAgeGroup(selectedAgeGroup === ageGroup ? "" : ageGroup)}
-                  className="font-comic text-xs"
-                >
-                  {ageGroup}
-                </Button>
-              ))}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-muted-foreground">Age Group</label>
+              <div className="flex flex-wrap gap-1">
+                {ageGroups.map(ageGroup => (
+                  <Button
+                    key={ageGroup}
+                    variant={selectedAgeGroup === ageGroup ? "secondary" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedAgeGroup(selectedAgeGroup === ageGroup ? "" : ageGroup)}
+                    className="text-xs h-8"
+                  >
+                    {ageGroup}
+                  </Button>
+                ))}
+              </div>
             </div>
-
-            {/* Clear Filters */}
-            {(searchTerm || selectedCategory || selectedAgeGroup) && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={clearFilters}
-                className="font-comic text-xs text-muted-foreground hover:text-foreground"
-              >
-                Clear All
-              </Button>
-            )}
           </div>
 
-          {/* Active Filters */}
-          {(selectedCategory || selectedAgeGroup) && (
-            <div className="flex flex-wrap gap-2 mt-4">
-              <span className="font-comic text-sm text-muted-foreground">Active filters:</span>
-              {selectedCategory && (
-                <Badge variant="default" className="font-comic">
-                  {selectedCategory}
-                  <button 
-                    onClick={() => setSelectedCategory("")}
-                    className="ml-2 hover:text-primary-foreground/80"
-                  >
-                    ×
-                  </button>
-                </Badge>
-              )}
-              {selectedAgeGroup && (
-                <Badge variant="secondary" className="font-comic">
-                  {selectedAgeGroup}
-                  <button 
-                    onClick={() => setSelectedAgeGroup("")}
-                    className="ml-2 hover:text-secondary-foreground/80"
-                  >
-                    ×
-                  </button>
-                </Badge>
-              )}
+          {/* Clear Filters Button */}
+          {(searchTerm || selectedCategory || selectedAgeGroup) && (
+            <div className="mt-4 flex justify-center">
+              <Button
+                onClick={clearFilters}
+                variant="outline"
+                size="sm"
+              >
+                Clear All Filters
+              </Button>
             </div>
           )}
         </div>
