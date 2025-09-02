@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LazyImage from "@/components/LazyImage";
+import FeedbackDialog from "@/components/FeedbackDialog";
 import { stories } from "@/data/stories";
 import { ArrowLeft, Clock, Users, Lightbulb, Heart } from "lucide-react";
 import { generateStorySchema, generateStoryMetaDescription, generateStoryKeywords, generateBreadcrumbSchema } from "@/utils/seo";
@@ -294,6 +295,21 @@ const StoryDetail = () => {
             </p>
           </CardContent>
         </Card>
+
+        {/* Feedback Section */}
+        <div className="mb-8">
+          <Card className="bg-gradient-to-br from-rainbow-purple/20 to-rainbow-blue/20 border-2 border-rainbow-purple/30">
+            <CardContent className="p-6 text-center">
+              <h3 className="font-kid text-xl text-foreground mb-3 flex items-center justify-center gap-2">
+                🌟 Did you enjoy this story? 💭
+              </h3>
+              <p className="font-comic text-muted-foreground mb-4 text-sm">
+                Your feedback helps us create even better stories for kids like you!
+              </p>
+              <FeedbackDialog storyTitle={story.title} />
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Navigation */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
