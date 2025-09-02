@@ -13,8 +13,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const Stories = () => {
   const websiteSchema = generateWebsiteSchema();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState("all");
 
   // Get unique categories and age groups for filters
   const categories = Array.from(new Set(stories.map(story => story.category)));
@@ -26,8 +26,8 @@ const Stories = () => {
       const matchesSearch = story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            story.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            story.moralLesson.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = !selectedCategory || story.category === selectedCategory;
-      const matchesAgeGroup = !selectedAgeGroup || story.ageGroup === selectedAgeGroup;
+      const matchesCategory = selectedCategory === "all" || story.category === selectedCategory;
+      const matchesAgeGroup = selectedAgeGroup === "all" || story.ageGroup === selectedAgeGroup;
       
       return matchesSearch && matchesCategory && matchesAgeGroup;
     });
@@ -35,8 +35,8 @@ const Stories = () => {
 
   const clearFilters = () => {
     setSearchTerm("");
-    setSelectedCategory("");
-    setSelectedAgeGroup("");
+    setSelectedCategory("all");
+    setSelectedAgeGroup("all");
   };
 
   return (
@@ -88,7 +88,7 @@ const Stories = () => {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Categories</SelectItem>
+                <SelectItem value="all">All Categories</SelectItem>
                 {categories.map((category) => (
                   <SelectItem key={category} value={category}>
                     {category}
@@ -102,7 +102,7 @@ const Stories = () => {
                 <SelectValue placeholder="Age Group" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Ages</SelectItem>
+                <SelectItem value="all">All Ages</SelectItem>
                 {ageGroups.map((ageGroup) => (
                   <SelectItem key={ageGroup} value={ageGroup}>
                     {ageGroup}
