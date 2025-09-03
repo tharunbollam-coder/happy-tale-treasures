@@ -1,12 +1,12 @@
-import SEO from "@/components/SEO";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
+import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
+import Textarea from "../components/ui/Textarea";
 import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
-import { generateWebsiteSchema } from "@/utils/seo";
+import { generateWebsiteSchema } from "../utils/seo";
 import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "../hooks/use-toast";
 
 const Contact = () => {
   const websiteSchema = generateWebsiteSchema();
@@ -18,7 +18,7 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // In a real app, you'd send this to a backend
     toast({
@@ -28,7 +28,7 @@ const Contact = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value

@@ -1,7 +1,7 @@
-import SEO from "@/components/SEO";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 import { Shield, Eye, Lock, Users } from "lucide-react";
-import { generateWebsiteSchema } from "@/utils/seo";
+import { generateWebsiteSchema } from "../utils/seo";
 
 const Privacy = () => {
   const websiteSchema = generateWebsiteSchema();

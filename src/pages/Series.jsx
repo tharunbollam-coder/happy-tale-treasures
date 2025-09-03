@@ -1,17 +1,15 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Clock, Users, Star, Calendar, Filter, Search } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { series } from "@/data/series";
-import LazyImage from "@/components/LazyImage";
-import SEO from "@/components/SEO";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Card from "../components/ui/Card";
+import Badge from "../components/ui/Badge";
+import Input from "../components/ui/Input";
+import Select from "../components/ui/Select";
+import Button from "../components/ui/Button";
+import { series } from "../data/series";
+import LazyImage from "../components/LazyImage";
+import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const Series = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +33,7 @@ const Series = () => {
   const categories = [...new Set(series.map(s => s.category))];
   const ageGroups = [...new Set(series.map(s => s.ageGroup))];
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status) {
       case 'ongoing': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
       case 'completed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
@@ -84,43 +82,28 @@ const Series = () => {
               </div>
               
               <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Categories</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
+                <option value="all">All Categories</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
               </Select>
 
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="ongoing">Ongoing</SelectItem>
-                  <SelectItem value="completed">Completed</SelectItem>
-                  <SelectItem value="hiatus">On Hiatus</SelectItem>
-                </SelectContent>
+                <option value="all">All Status</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="hiatus">On Hiatus</option>
               </Select>
 
               <Select value={ageGroupFilter} onValueChange={setAgeGroupFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Age Group" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Ages</SelectItem>
-                  {ageGroups.map((ageGroup) => (
-                    <SelectItem key={ageGroup} value={ageGroup}>
-                      {ageGroup}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
+                <option value="all">All Ages</option>
+                {ageGroups.map((ageGroup) => (
+                  <option key={ageGroup} value={ageGroup}>
+                    {ageGroup}
+                  </option>
+                ))}
               </Select>
 
               <Button 
@@ -174,7 +157,7 @@ const Series = () => {
                   </div>
                 </div>
                   
-                  <CardHeader>
+                  <div className="p-6">
                     <div className="flex justify-between items-start mb-2">
                       <Badge variant="secondary" className="text-xs">
                         {s.category}
@@ -184,13 +167,11 @@ const Series = () => {
                         <span className="text-sm font-medium">{s.rating}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-xl font-kid group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-kid group-hover:text-primary transition-colors mb-3">
                       {s.title}
-                    </CardTitle>
-                  </CardHeader>
-                  
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground text-sm line-clamp-3">
+                    </h3>
+                    
+                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
                       {s.description}
                     </p>
                     
@@ -217,7 +198,7 @@ const Series = () => {
                         <span className="text-xs">{s.publishSchedule}</span>
                       </div>
                     </div>
-                  </CardContent>
+                  </div>
                 </Card>
               </Link>
             ))}

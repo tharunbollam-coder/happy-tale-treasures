@@ -1,24 +1,22 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Clock, Users, Star, Calendar, Play, Lock, ChevronRight } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { series } from "@/data/series";
-import LazyImage from "@/components/LazyImage";
-import SEO from "@/components/SEO";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Card from "../components/ui/Card";
+import Badge from "../components/ui/Badge";
+import Button from "../components/ui/Button";
+import { series } from "../data/series";
+import LazyImage from "../components/LazyImage";
+import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const SeriesDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const currentSeries = series.find((s) => s.id === id);
 
   if (!currentSeries) {
     return <Navigate to="/not-found" replace />;
   }
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status) {
       case 'ongoing': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
       case 'completed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
@@ -27,7 +25,7 @@ const SeriesDetail = () => {
     }
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -171,7 +169,7 @@ const SeriesDetail = () => {
                       : 'bg-muted/30 cursor-not-allowed'
                   } backdrop-blur-sm border-border/50`}
                 >
-                  <CardContent className="p-0">
+                  <div className="p-0">
                     {chapter.isPublished ? (
                       <Link to={`/series/${currentSeries.id}/chapter/${chapter.id}`} className="block">
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-6">
@@ -249,7 +247,7 @@ const SeriesDetail = () => {
                         <Lock className="hidden sm:block w-6 h-6 text-muted-foreground flex-shrink-0" />
                       </div>
                     )}
-                  </CardContent>
+                  </div>
                 </Card>
               ))}
             </div>

@@ -1,16 +1,15 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Clock, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { series } from "@/data/series";
-import LazyImage from "@/components/LazyImage";
-import SEO from "@/components/SEO";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Card from "../components/ui/Card";
+import Badge from "../components/ui/Badge";
+import Button from "../components/ui/Button";
+import { series } from "../data/series";
+import LazyImage from "../components/LazyImage";
+import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const ChapterDetail = () => {
-  const { seriesId, chapterId } = useParams<{ seriesId: string; chapterId: string }>();
+  const { seriesId, chapterId } = useParams();
   
   const currentSeries = series.find((s) => s.id === seriesId);
   const currentChapter = currentSeries?.chapters.find((c) => c.id === chapterId);
@@ -27,7 +26,7 @@ const ChapterDetail = () => {
   const previousChapter = currentChapterIndex > 0 ? currentSeries.chapters[currentChapterIndex - 1] : null;
   const nextChapter = currentChapterIndex < currentSeries.chapters.length - 1 ? currentSeries.chapters[currentChapterIndex + 1] : null;
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -87,7 +86,7 @@ const ChapterDetail = () => {
           <div className="space-y-8 mb-12">
             {currentChapter.content.map((section, index) => (
               <Card key={index} className="bg-card/60 backdrop-blur-sm border-border/50 overflow-hidden">
-                <CardContent className="p-0">
+                <div className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                     {section.image && (
                       <div className="order-1 lg:order-1">
@@ -108,7 +107,7 @@ const ChapterDetail = () => {
                       </div>
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>

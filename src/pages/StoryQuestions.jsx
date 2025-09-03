@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { stories } from "@/data/stories";
+import Button from "../components/ui/Button";
+import Card from "../components/ui/Card";
+import { stories } from "../data/stories";
 import { ArrowLeft, Check, X } from "lucide-react";
 
 const StoryQuestions = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const story = stories.find((s) => s.id === id);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [gameComplete, setGameComplete] = useState(false);
 
@@ -106,7 +106,7 @@ const StoryQuestions = () => {
 
   const questions = getQuestions();
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = (answer) => {
     setSelectedAnswer(answer);
     setShowResult(true);
     if (answer === questions[currentQuestion].correct) {
@@ -137,12 +137,10 @@ const StoryQuestions = () => {
       <div className="min-h-screen py-8 px-4">
         <div className="container mx-auto max-w-2xl">
           <Card className="text-center bg-gradient-to-br from-rainbow-green/20 to-rainbow-blue/20 border-2 border-rainbow-green/30">
-            <CardHeader>
+            <div className="p-6">
               <h1 className="font-kid text-4xl text-foreground mb-4">
                 🎉 Fantastic! 🎉
               </h1>
-            </CardHeader>
-            <CardContent>
               <div className="space-y-6">
                 <div className="text-6xl mb-4">
                   {score === questions.length ? "🌟" : score >= questions.length / 2 ? "👏" : "📚"}
@@ -161,7 +159,7 @@ const StoryQuestions = () => {
                   </Link>
                 </div>
               </div>
-            </CardContent>
+            </div>
           </Card>
         </div>
       </div>
@@ -181,11 +179,11 @@ const StoryQuestions = () => {
         </div>
 
         <Card className="bg-gradient-to-br from-rainbow-purple/20 to-rainbow-green/20 border-2 border-rainbow-purple/30">
-          <CardHeader>
+          <div className="p-6">
             <h1 className="font-kid text-3xl text-foreground text-center mb-4">
               ❓ Story Questions
             </h1>
-            <div className="text-center">
+            <div className="text-center mb-6">
               <div className="font-comic text-lg text-muted-foreground">
                 Question {currentQuestion + 1} of {questions.length}
               </div>
@@ -193,8 +191,6 @@ const StoryQuestions = () => {
                 Score: {score}/{questions.length}
               </div>
             </div>
-          </CardHeader>
-          <CardContent>
             <div className="space-y-6">
               <div className="text-center">
                 <h2 className="font-kid text-2xl text-foreground mb-6">
@@ -240,7 +236,7 @@ const StoryQuestions = () => {
                 </div>
               )}
             </div>
-          </CardContent>
+          </div>
         </Card>
       </div>
     </div>

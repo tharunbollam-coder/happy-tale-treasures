@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { stories } from "@/data/stories";
-import { ArrowLeft, Check, X, Star } from "lucide-react";
+import Button from "../components/ui/Button";
+import Card from "../components/ui/Card";
+import Input from "../components/ui/Input";
+import { stories } from "../data/stories";
+import { ArrowLeft, Check, X } from "lucide-react";
 
 const SpellingGame = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
   const story = stories.find((s) => s.id === id);
   const [currentWord, setCurrentWord] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
@@ -74,12 +74,10 @@ const SpellingGame = () => {
       <div className="min-h-screen py-8 px-4">
         <div className="container mx-auto max-w-2xl">
           <Card className="text-center bg-gradient-to-br from-rainbow-yellow/20 to-rainbow-green/20 border-2 border-rainbow-yellow/30">
-            <CardHeader>
+            <div className="p-6">
               <h1 className="font-kid text-4xl text-foreground mb-4">
                 🎉 Great Job! 🎉
               </h1>
-            </CardHeader>
-            <CardContent>
               <div className="space-y-6">
                 <div className="text-6xl mb-4">
                   {score === words.length ? "🌟" : score >= words.length / 2 ? "👏" : "💪"}
@@ -98,7 +96,7 @@ const SpellingGame = () => {
                   </Link>
                 </div>
               </div>
-            </CardContent>
+            </div>
           </Card>
         </div>
       </div>
@@ -118,11 +116,11 @@ const SpellingGame = () => {
         </div>
 
         <Card className="bg-gradient-to-br from-rainbow-blue/20 to-rainbow-purple/20 border-2 border-rainbow-blue/30">
-          <CardHeader>
+          <div className="p-6">
             <h1 className="font-kid text-3xl text-foreground text-center mb-4">
               🔤 Spelling Challenge
             </h1>
-            <div className="text-center">
+            <div className="text-center mb-6">
               <div className="font-comic text-lg text-muted-foreground">
                 Word {currentWord + 1} of {words.length}
               </div>
@@ -130,8 +128,6 @@ const SpellingGame = () => {
                 Score: {score}/{words.length}
               </div>
             </div>
-          </CardHeader>
-          <CardContent>
             <div className="space-y-6 text-center">
               <div className="text-6xl mb-4">📝</div>
               
@@ -181,7 +177,7 @@ const SpellingGame = () => {
                 </div>
               )}
             </div>
-          </CardContent>
+          </div>
         </Card>
       </div>
     </div>
