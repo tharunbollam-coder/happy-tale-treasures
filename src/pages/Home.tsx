@@ -161,6 +161,100 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Story Categories Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto text-center">
+          <h3 className="font-kid text-3xl md:text-4xl text-foreground mb-4">
+            🌟 Discover Stories by Category 🌟
+          </h3>
+          <p className="font-comic text-lg text-muted-foreground max-w-3xl mx-auto mb-12">
+            Find the perfect stories for every moment and learning goal!
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-purple-200/50 dark:border-purple-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Moon emoji">🌙</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Bedtime Stories for Kids</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Gentle tales perfect for peaceful nights and sweet dreams
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-green-200/50 dark:border-green-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Heart emoji">❤️</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Moral Stories for Kids</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Character-building tales that teach values and life lessons
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-blue-200/50 dark:border-blue-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Book emoji">📖</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">English Stories for Kids</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Fun stories that improve reading and language skills
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-orange-200/50 dark:border-orange-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Star emoji">⭐</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Classic Tales for Children</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Timeless stories that have delighted generations
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900/30 dark:to-pink-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-pink-200/50 dark:border-pink-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Rainbow emoji">🌈</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Fairy Tales for Kids</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Magical adventures with princesses, dragons, and wonder
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900/30 dark:to-yellow-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-yellow-200/50 dark:border-yellow-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Lightbulb emoji">💡</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Educational Stories</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Learning adventures that make education exciting
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-900/30 dark:to-teal-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-teal-200/50 dark:border-teal-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Paw emoji">🐾</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Animal Stories for Kids</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Heartwarming tales featuring lovable animal friends
+                </p>
+              </div>
+            </Link>
+            
+            <Link to="/stories" className="group">
+              <div className="bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900/30 dark:to-indigo-800/30 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-indigo-200/50 dark:border-indigo-700/50">
+                <div className="text-5xl mb-3" role="img" aria-label="Smile emoji">😊</div>
+                <h4 className="font-kid text-lg mb-2 text-foreground">Short Stories for Kids</h4>
+                <p className="font-comic text-sm text-muted-foreground">
+                  Perfect bite-sized tales for busy little readers
+                </p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-16 px-4 bg-secondary/30">
         <div className="container mx-auto text-center">
