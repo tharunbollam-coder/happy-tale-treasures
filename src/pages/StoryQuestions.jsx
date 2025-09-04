@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Button from "../components/ui/Button";
-import Card from "../components/ui/Card";
+import { Card, CardContent, CardHeader } from "../components/ui/Card";
 import { stories } from "../data/stories";
 import { ArrowLeft, Check, X } from "lucide-react";
 

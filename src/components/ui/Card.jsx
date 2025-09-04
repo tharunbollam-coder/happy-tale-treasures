@@ -43,3 +43,4 @@ const CardFooter = ({ className = "", children, ...props }) => (
 );
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
+export default Card;

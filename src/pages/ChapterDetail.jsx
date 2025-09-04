@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { Clock, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
-import Card from "../components/ui/Card";
+import { Card, CardContent, CardHeader } from "../components/ui/Card";
 import Badge from "../components/ui/Badge";
 import Button from "../components/ui/Button";
 import { series } from "../data/series";

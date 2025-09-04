@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Clock, Users, Star, Calendar, Filter, Search } from "lucide-react";
-import Card from "../components/ui/Card";
+import { Card, CardContent, CardHeader } from "../components/ui/Card";
 import Badge from "../components/ui/Badge";
 import Input from "../components/ui/Input";
 import Select from "../components/ui/Select";
