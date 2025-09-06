@@ -212,54 +212,102 @@ const StoryDetail = () => {
         {/* Word Helper Section */}
         {story.wordHelpers && story.wordHelpers.length > 0 && (
           <div className={`${isMobile ? 'mb-4 mt-6' : 'mb-8 mt-12'}`}>
-            <Card className="bg-gradient-to-br from-rainbow-red/20 to-rainbow-orange/20 border-4 border-rainbow-red/50 shadow-2xl hover:shadow-rainbow-orange/40 transition-all duration-500">
+            <Card className="bg-gradient-to-br from-rainbow-purple/20 to-rainbow-pink/20 border-4 border-rainbow-purple/50 shadow-2xl hover:shadow-rainbow-pink/40 transition-all duration-500">
               <CardHeader className={isMobile ? 'p-3' : ''}>
-                <h2 className={`font-kid ${isMobile ? 'text-lg' : 'text-2xl'} text-foreground flex items-center gap-2`}>
-                  📖 Word Helper 🤔
-                </h2>
-                <p className={`font-comic text-muted-foreground ${isMobile ? 'text-xs' : 'text-sm'}`}>
-                  These words might be new to you. Let's learn them together!
-                </p>
+                <div className="text-center">
+                  <h2 className={`font-kid ${isMobile ? 'text-xl' : 'text-3xl'} text-foreground flex items-center justify-center gap-2 mb-2`}>
+                    🧠 Smart Words! 📚
+                  </h2>
+                  <div className={`inline-flex items-center gap-2 bg-rainbow-purple/30 ${isMobile ? 'px-4 py-2' : 'px-6 py-3'} rounded-full border-4 border-rainbow-purple/50`}>
+                    <span className={`${isMobile ? 'text-base' : 'text-lg'}`}>✨</span>
+                    <span className={`font-comic font-bold ${isMobile ? 'text-sm' : 'text-base'} text-rainbow-purple`}>
+                      Let's learn big words together!
+                    </span>
+                    <span className={`${isMobile ? 'text-base' : 'text-lg'}`}>🌟</span>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent className={isMobile ? 'p-3' : ''}>
-                <div className={`grid grid-cols-1 ${isMobile ? 'gap-3' : 'md:grid-cols-2 gap-4'}`}>
+                <div className={`grid grid-cols-1 ${isMobile ? 'gap-4' : 'md:grid-cols-2 lg:grid-cols-3 gap-6'}`}>
                   {story.wordHelpers.map((wordHelper, index) => (
                     <div 
                       key={index} 
-                      className={`bg-rainbow-orange/30 ${isMobile ? 'p-3' : 'p-4'} rounded-xl border-4 border-rainbow-orange/50 hover:scale-105 transition-all duration-300 hover:bg-rainbow-orange/40`}
+                      className={`relative bg-white/80 ${isMobile ? 'p-4' : 'p-6'} rounded-2xl border-4 border-rainbow-colors shadow-xl hover:scale-105 transition-all duration-300 hover:shadow-2xl`}
+                      style={{
+                        borderColor: index % 3 === 0 ? 'hsl(var(--rainbow-red))' : 
+                                   index % 3 === 1 ? 'hsl(var(--rainbow-blue))' : 
+                                   'hsl(var(--rainbow-green))'
+                      }}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className={`${isMobile ? 'text-xl' : 'text-2xl'} mt-1`}>💡</div>
-                        <div className="flex-1">
-                          <h3 className={`font-kid ${isMobile ? 'text-base' : 'text-lg'} font-bold text-rainbow-red mb-1`}>
-                            {wordHelper.word}
-                          </h3>
-                          {wordHelper.pronunciation && (
-                            <div className={`font-comic ${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground mb-2 italic`}>
-                              Sounds like: {wordHelper.pronunciation}
-                            </div>
-                          )}
-                          <p className={`font-comic ${isMobile ? 'text-sm' : 'text-base'} text-foreground leading-relaxed`}>
+                      {/* Decorative corner */}
+                      <div className={`absolute -top-3 -right-3 ${isMobile ? 'w-8 h-8' : 'w-10 h-10'} rounded-full flex items-center justify-center shadow-lg`}
+                           style={{
+                             backgroundColor: index % 3 === 0 ? 'hsl(var(--rainbow-red))' : 
+                                            index % 3 === 1 ? 'hsl(var(--rainbow-blue))' : 
+                                            'hsl(var(--rainbow-green))'
+                           }}>
+                        <span className={`${isMobile ? 'text-sm' : 'text-lg'} text-white font-bold`}>
+                          {index + 1}
+                        </span>
+                      </div>
+                      
+                      {/* Word */}
+                      <div className="text-center mb-4">
+                        <div className={`${isMobile ? 'text-2xl mb-2' : 'text-3xl mb-3'}`}>
+                          {index % 3 === 0 ? '🎯' : index % 3 === 1 ? '🎪' : '🎨'}
+                        </div>
+                        <h3 className={`font-kid ${isMobile ? 'text-lg' : 'text-2xl'} font-bold mb-2`}
+                            style={{
+                              color: index % 3 === 0 ? 'hsl(var(--rainbow-red))' : 
+                                     index % 3 === 1 ? 'hsl(var(--rainbow-blue))' : 
+                                     'hsl(var(--rainbow-green))'
+                            }}>
+                          {wordHelper.word}
+                        </h3>
+                        
+                        {/* Simple meaning */}
+                        <div className={`bg-gradient-to-br from-gray-50 to-gray-100 ${isMobile ? 'p-3' : 'p-4'} rounded-xl border-2 border-gray-200`}>
+                          <div className={`${isMobile ? 'text-base mb-1' : 'text-lg mb-2'} font-bold text-gray-700`}>
+                            This means:
+                          </div>
+                          <p className={`font-comic ${isMobile ? 'text-sm' : 'text-base'} text-gray-800 leading-relaxed`}>
                             {wordHelper.definition}
                           </p>
                         </div>
                       </div>
-                      <div className={`${isMobile ? 'mt-2' : 'mt-3'} text-center`}>
-                        <button className={`bg-rainbow-red/50 hover:bg-rainbow-red/70 ${isMobile ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'} rounded-full border-2 border-rainbow-red/60 font-comic font-bold transition-all duration-300 hover:scale-110`}>
-                          🔊 Say it!
+                      
+                      {/* Fun interaction */}
+                      <div className="text-center">
+                        <button className={`bg-gradient-to-r from-rainbow-yellow/60 to-rainbow-orange/60 hover:from-rainbow-yellow/80 hover:to-rainbow-orange/80 ${isMobile ? 'px-4 py-2 text-xs' : 'px-6 py-3 text-sm'} rounded-full border-3 border-rainbow-yellow/70 font-comic font-bold transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl`}>
+                          <span className={isMobile ? 'mr-1' : 'mr-2'}>🎵</span>
+                          Got it!
                         </button>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className={`${isMobile ? 'mt-4' : 'mt-6'} bg-gradient-to-r from-rainbow-red/30 via-rainbow-orange/30 to-rainbow-yellow/30 ${isMobile ? 'p-3' : 'p-4'} rounded-xl border-4 border-dashed border-rainbow-red/50`}>
-                  <div className="text-center">
-                    <h3 className={`font-kid ${isMobile ? 'text-sm mb-2' : 'text-lg mb-3'} text-foreground flex items-center justify-center gap-2`}>
-                      🌟 Great job learning new words! 🎉
+                
+                {/* Encouragement section */}
+                <div className={`${isMobile ? 'mt-6' : 'mt-8'} text-center`}>
+                  <div className={`bg-gradient-to-r from-rainbow-purple/30 via-rainbow-pink/30 to-rainbow-purple/30 ${isMobile ? 'p-4' : 'p-6'} rounded-2xl border-4 border-dashed border-rainbow-purple/50`}>
+                    <div className={`${isMobile ? 'text-3xl mb-2' : 'text-4xl mb-3'}`}>🏆</div>
+                    <h3 className={`font-kid ${isMobile ? 'text-lg mb-2' : 'text-2xl mb-3'} text-foreground`}>
+                      Wow! You're learning so many new words!
                     </h3>
-                    <p className={`font-comic text-muted-foreground ${isMobile ? 'text-xs' : 'text-sm'}`}>
-                      Try using these words when you tell the story to someone else!
+                    <p className={`font-comic text-muted-foreground ${isMobile ? 'text-sm mb-3' : 'text-base mb-4'}`}>
+                      Try to use these words when you talk today. You're getting smarter!
                     </p>
+                    <div className={`flex justify-center ${isMobile ? 'gap-2' : 'gap-4'} flex-wrap`}>
+                      <div className={`bg-rainbow-red/60 ${isMobile ? 'px-3 py-1' : 'px-4 py-2'} rounded-full border-2 border-rainbow-red/70`}>
+                        <span className={`font-comic font-bold ${isMobile ? 'text-xs' : 'text-sm'} text-white`}>📖 Smart Reader</span>
+                      </div>
+                      <div className={`bg-rainbow-blue/60 ${isMobile ? 'px-3 py-1' : 'px-4 py-2'} rounded-full border-2 border-rainbow-blue/70`}>
+                        <span className={`font-comic font-bold ${isMobile ? 'text-xs' : 'text-sm'} text-white`}>🧠 Word Explorer</span>
+                      </div>
+                      <div className={`bg-rainbow-green/60 ${isMobile ? 'px-3 py-1' : 'px-4 py-2'} rounded-full border-2 border-rainbow-green/70`}>
+                        <span className={`font-comic font-bold ${isMobile ? 'text-xs' : 'text-sm'} text-white`}>⭐ Learning Star</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
