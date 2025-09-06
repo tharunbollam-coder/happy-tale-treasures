@@ -82,6 +82,47 @@ const About = () => {
           </div>
         </div>
 
+        <div className="bg-card p-8 rounded-3xl shadow-lg border border-border mb-12">
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <Sparkles className="w-10 h-10 text-primary" />
+              <h2 className="font-kid text-3xl text-foreground">Our Story Creation Process</h2>
+              <BookOpen className="w-10 h-10 text-accent" />
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <p className="font-comic text-lg text-muted-foreground mb-6 leading-relaxed">
+                We believe in transparency about how our stories are created. Our educational stories are crafted 
+                using advanced AI technology combined with careful human oversight and editorial review.
+              </p>
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-gradient-soft p-6 rounded-2xl border border-border">
+                  <div className="text-3xl mb-3" role="img" aria-label="AI emoji">🤖</div>
+                  <h3 className="font-kid text-xl text-foreground mb-3">AI-Assisted Creation</h3>
+                  <p className="font-comic text-muted-foreground">
+                    We use AI tools to help generate creative, age-appropriate stories with educational value, 
+                    ensuring consistent quality and engaging content for children.
+                  </p>
+                </div>
+                <div className="bg-gradient-soft p-6 rounded-2xl border border-border">
+                  <div className="text-3xl mb-3" role="img" aria-label="Human review emoji">👥</div>
+                  <h3 className="font-kid text-xl text-foreground mb-3">Human Review & Editing</h3>
+                  <p className="font-comic text-muted-foreground">
+                    Every story undergoes careful human review and editing to ensure educational value, 
+                    appropriate content, and alignment with our mission of combining fun with learning.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-primary/10 p-4 rounded-xl border border-primary/20">
+                <p className="font-comic text-sm text-muted-foreground">
+                  <strong className="text-foreground">Our Commitment:</strong> While we use AI to help create content, 
+                  we maintain strict editorial standards and human oversight to ensure all stories meet our 
+                  educational goals and safety standards for children.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center">
           <h2 className="font-kid text-2xl text-foreground mb-4">Join Our Reading Adventure!</h2>
           <p className="font-comic text-muted-foreground mb-6">
