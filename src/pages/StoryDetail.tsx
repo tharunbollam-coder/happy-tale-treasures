@@ -209,6 +209,64 @@ const StoryDetail = () => {
           ))}
         </div>
 
+        {/* Word Helper Section */}
+        {story.wordHelpers && story.wordHelpers.length > 0 && (
+          <div className={`${isMobile ? 'mb-4 mt-6' : 'mb-8 mt-12'}`}>
+            <Card className="bg-gradient-to-br from-rainbow-red/20 to-rainbow-orange/20 border-4 border-rainbow-red/50 shadow-2xl hover:shadow-rainbow-orange/40 transition-all duration-500">
+              <CardHeader className={isMobile ? 'p-3' : ''}>
+                <h2 className={`font-kid ${isMobile ? 'text-lg' : 'text-2xl'} text-foreground flex items-center gap-2`}>
+                  📖 Word Helper 🤔
+                </h2>
+                <p className={`font-comic text-muted-foreground ${isMobile ? 'text-xs' : 'text-sm'}`}>
+                  These words might be new to you. Let's learn them together!
+                </p>
+              </CardHeader>
+              <CardContent className={isMobile ? 'p-3' : ''}>
+                <div className={`grid grid-cols-1 ${isMobile ? 'gap-3' : 'md:grid-cols-2 gap-4'}`}>
+                  {story.wordHelpers.map((wordHelper, index) => (
+                    <div 
+                      key={index} 
+                      className={`bg-rainbow-orange/30 ${isMobile ? 'p-3' : 'p-4'} rounded-xl border-4 border-rainbow-orange/50 hover:scale-105 transition-all duration-300 hover:bg-rainbow-orange/40`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className={`${isMobile ? 'text-xl' : 'text-2xl'} mt-1`}>💡</div>
+                        <div className="flex-1">
+                          <h3 className={`font-kid ${isMobile ? 'text-base' : 'text-lg'} font-bold text-rainbow-red mb-1`}>
+                            {wordHelper.word}
+                          </h3>
+                          {wordHelper.pronunciation && (
+                            <div className={`font-comic ${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground mb-2 italic`}>
+                              Sounds like: {wordHelper.pronunciation}
+                            </div>
+                          )}
+                          <p className={`font-comic ${isMobile ? 'text-sm' : 'text-base'} text-foreground leading-relaxed`}>
+                            {wordHelper.definition}
+                          </p>
+                        </div>
+                      </div>
+                      <div className={`${isMobile ? 'mt-2' : 'mt-3'} text-center`}>
+                        <button className={`bg-rainbow-red/50 hover:bg-rainbow-red/70 ${isMobile ? 'px-3 py-1 text-xs' : 'px-4 py-2 text-sm'} rounded-full border-2 border-rainbow-red/60 font-comic font-bold transition-all duration-300 hover:scale-110`}>
+                          🔊 Say it!
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className={`${isMobile ? 'mt-4' : 'mt-6'} bg-gradient-to-r from-rainbow-red/30 via-rainbow-orange/30 to-rainbow-yellow/30 ${isMobile ? 'p-3' : 'p-4'} rounded-xl border-4 border-dashed border-rainbow-red/50`}>
+                  <div className="text-center">
+                    <h3 className={`font-kid ${isMobile ? 'text-sm mb-2' : 'text-lg mb-3'} text-foreground flex items-center justify-center gap-2`}>
+                      🌟 Great job learning new words! 🎉
+                    </h3>
+                    <p className={`font-comic text-muted-foreground ${isMobile ? 'text-xs' : 'text-sm'}`}>
+                      Try using these words when you tell the story to someone else!
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         {/* Reading Progress & Activities */}
         <div className={`${isMobile ? 'mb-4 mt-6' : 'mb-8 mt-12'} space-y-6`}>
           <Card className="bg-gradient-to-br from-rainbow-green/30 to-rainbow-blue/30 border-4 border-rainbow-green/50 shadow-2xl hover:shadow-rainbow-blue/40 transition-all duration-500">

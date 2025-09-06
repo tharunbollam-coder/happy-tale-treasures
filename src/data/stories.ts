@@ -3,6 +3,12 @@ export interface StorySection {
   image?: string;
 }
 
+export interface WordHelper {
+  word: string;
+  definition: string;
+  pronunciation?: string;
+}
+
 export interface Story {
   id: string;
   title: string;
@@ -13,6 +19,7 @@ export interface Story {
   readingTime: string;
   image: string;
   category: string;
+  wordHelpers?: WordHelper[];
 }
 
 export const stories: Story[] = [
@@ -56,7 +63,24 @@ From that day on, Zippy and Shell became the best of friends, and they often rac
     ageGroup: "4-8 years",
     readingTime: "5 minutes",
     image: "/src/assets/tortoise-hare.jpg",
-    category: "Classic Fables"
+    category: "Classic Fables",
+    wordHelpers: [
+      {
+        word: "bragging",
+        definition: "Talking too proudly about what you can do",
+        pronunciation: "BRAG-ing"
+      },
+      {
+        word: "determined",
+        definition: "Having your mind made up to do something no matter what",
+        pronunciation: "dih-TUR-mind"
+      },
+      {
+        word: "consistent",
+        definition: "Doing the same thing over and over without giving up",
+        pronunciation: "kuhn-SIS-tent"
+      }
+    ]
   },
   {
     id: "three-little-pigs",
@@ -106,7 +130,19 @@ From then on, all three brothers worked together to build strong, safe homes for
     ageGroup: "3-7 years",
     readingTime: "6 minutes",
     image: "/src/assets/three-pigs.jpg",
-    category: "Classic Fables"
+    category: "Classic Fables",
+    wordHelpers: [
+      {
+        word: "independently",
+        definition: "By yourself, without help from others",
+        pronunciation: "in-dih-PEN-dent-lee"
+      },
+      {
+        word: "chinny-chin-chin",
+        definition: "A fun way to say 'chin' in fairy tales",
+        pronunciation: "CHIN-ee-chin-chin"
+      }
+    ]
   },
   {
     id: "ant-and-grasshopper",
@@ -158,6 +194,18 @@ They learned that work and play can both have their place in life!`,
     ageGroup: "5-9 years",
     readingTime: "5 minutes",
     image: "/src/assets/ant-grasshopper.jpg",
-    category: "Classic Fables"
+    category: "Classic Fables",
+    wordHelpers: [
+      {
+        word: "preparing",
+        definition: "Getting ready for something that will happen later",
+        pronunciation: "pri-PAIR-ing"
+      },
+      {
+        word: "carefree",
+        definition: "Happy and not worried about anything",
+        pronunciation: "KAIR-free"
+      }
+    ]
   }
 ];
