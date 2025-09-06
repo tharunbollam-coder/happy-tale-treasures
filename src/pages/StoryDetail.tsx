@@ -92,22 +92,6 @@ const StoryDetail = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-rainbow-yellow/20"></div>
               
-              {/* Floating fun elements */}
-              <div className="absolute top-2 left-2">
-                <div className="bg-rainbow-yellow/90 rounded-full p-1 shadow-lg">
-                  <span className="text-lg">⭐</span>
-                </div>
-              </div>
-              <div className="absolute top-2 right-2">
-                <div className="bg-rainbow-blue/90 rounded-full p-1 shadow-lg">
-                  <span className="text-lg">🎈</span>
-                </div>
-              </div>
-              <div className="absolute top-1/2 right-4">
-                <div className="bg-rainbow-green/90 rounded-full p-1 shadow-lg">
-                  <span className="text-lg">🌟</span>
-                </div>
-              </div>
               
               <div className={`absolute ${isMobile ? 'bottom-3 left-3 right-3' : 'bottom-6 left-6 right-6'} text-white`}>
                 <Badge className="mb-2 bg-rainbow-purple/90 text-white font-comic font-bold text-xs px-3 py-1 rounded-full border-2 border-white/20">
@@ -184,24 +168,12 @@ const StoryDetail = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-rainbow-purple/20 via-transparent to-rainbow-yellow/10 pointer-events-none"></div>
                     
-                    {/* Fun floating elements */}
-                    <div className={`absolute ${isMobile ? 'top-2 right-2' : 'top-4 right-4'}`}>
-                      <div className="bg-rainbow-yellow/95 rounded-full p-1 shadow-lg border-2 border-white/50">
-                        <span className={`${isMobile ? 'text-lg' : 'text-2xl'}`}>🌟</span>
-                      </div>
-                    </div>
+                    {/* Keep only book icon */}
                     <div className={`absolute ${isMobile ? 'bottom-2 left-2' : 'bottom-4 left-4'}`}>
                       <div className="bg-rainbow-blue/95 rounded-full p-1 shadow-lg border-2 border-white/50">
                         <span className={`${isMobile ? 'text-base' : 'text-xl'}`}>📖</span>
                       </div>
                     </div>
-                    {!isMobile && (
-                      <div className="absolute top-1/2 left-4">
-                        <div className="bg-rainbow-green/95 rounded-full p-1 shadow-lg border-2 border-white/50">
-                          <span className="text-lg">🎈</span>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               )}
