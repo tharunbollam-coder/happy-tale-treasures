@@ -209,6 +209,23 @@ const StoryDetail = () => {
           ))}
         </div>
 
+        {/* Moral of the Story */}
+        <Card className={`${isMobile ? 'mb-4 mt-6' : 'mb-8 mt-12'} bg-gradient-to-br from-rainbow-yellow/20 to-rainbow-green/20 border-4 border-rainbow-yellow/50 shadow-2xl hover:shadow-rainbow-green/40 transition-all duration-500 hover:scale-105`}>
+          <CardHeader className={isMobile ? 'p-3' : ''}>
+            <h2 className={`font-kid ${isMobile ? 'text-lg' : 'text-2xl'} text-foreground flex items-center gap-2`}>
+              <Lightbulb className={`${isMobile ? 'w-6 h-6' : 'w-8 h-8'} text-rainbow-yellow`} />
+              Moral of the Story ✨
+            </h2>
+          </CardHeader>
+          <CardContent className={isMobile ? 'p-3' : ''}>
+            <div className="bg-rainbow-yellow/30 p-4 rounded-xl border-2 border-rainbow-yellow/50">
+              <p className={`font-comic ${isMobile ? 'text-base' : 'text-lg'} text-foreground leading-relaxed text-center font-bold`}>
+                💡 {story.moralLesson} 🌟
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Word Helper Section */}
         {story.wordHelpers && story.wordHelpers.length > 0 && (
           <div className={`${isMobile ? 'mb-4 mt-6' : 'mb-8 mt-12'}`}>
@@ -385,23 +402,6 @@ const StoryDetail = () => {
             </CardContent>
           </Card>
         </div>
-
-        {/* Moral Lesson */}
-        <Card className={`${isMobile ? 'mb-4 mt-6' : 'mb-8 mt-12'} bg-gradient-to-br from-rainbow-yellow/20 to-rainbow-green/20 border-4 border-rainbow-yellow/50 shadow-2xl hover:shadow-rainbow-green/40 transition-all duration-500 hover:scale-105`}>
-          <CardHeader className={isMobile ? 'p-3' : ''}>
-            <h2 className={`font-kid ${isMobile ? 'text-lg' : 'text-2xl'} text-foreground flex items-center gap-2`}>
-              <Lightbulb className={`${isMobile ? 'w-6 h-6' : 'w-8 h-8'} text-rainbow-yellow`} />
-              What We Learn ✨
-            </h2>
-          </CardHeader>
-          <CardContent className={isMobile ? 'p-3' : ''}>
-            <div className="bg-rainbow-yellow/30 p-4 rounded-xl border-2 border-rainbow-yellow/50">
-              <p className={`font-comic ${isMobile ? 'text-base' : 'text-lg'} text-foreground leading-relaxed text-center font-bold`}>
-                💡 {story.moralLesson} 🌟
-              </p>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Feedback Section */}
         <div className={isMobile ? 'mb-4' : 'mb-8'}>
