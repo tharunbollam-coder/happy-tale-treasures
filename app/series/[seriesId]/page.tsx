@@ -1,30 +1,29 @@
-@@ .. @@
- interface Props {
--  params: { id: string }
-+  params: { seriesId: string }
- }
+interface Props {
+  params: { seriesId: string }
+}
 
- export async function generateMetadata({ params }: Props): Promise<Metadata> {
--  const currentSeries = series.find((s) => s.id === params.id)
-+  const currentSeries = series.find((s) => s.id === params.seriesId)
-   
-   if (!currentSeries) {
-@@ .. @@
- export async function generateStaticParams() {
-   return series.map((s) => ({
--    id: s.id,
-+    seriesId: s.id,
-   }))
- }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const currentSeries = series.find((s) => s.id === params.seriesId)
+  
+  if (!currentSeries) {
+    return {
+      title: 'Series Not Found'
+    }
+  }
+}
 
- export default function SeriesDetail({ params }: Props) {
--  const currentSeries = series.find((s) => s.id === params.id)
-+  const currentSeries = series.find((s) => s.id === params.seriesId)
-   
-   if (!currentSeries) {
-@@ .. @@
-   }
+export async function generateStaticParams() {
+  return series.map((s) => ({
+    seriesId: s.id,
+  }))
+}
 
--  return <SeriesDetailPage seriesId={params.id} />
-+  return <SeriesDetailPage seriesId={params.seriesId} />
- }
+export default function SeriesDetail({ params }: Props) {
+  const currentSeries = series.find((s) => s.id === params.seriesId)
+  
+  if (!currentSeries) {
+    return <div>Series not found</div>
+  }
+
+  return <SeriesDetailPage seriesId={params.seriesId} />
+}
